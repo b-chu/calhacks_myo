@@ -30,7 +30,6 @@ end
 
 function openhand()
     myo.keyboard("t", "press", "control")
-	--comment
 end
 
 -- Helpers
