@@ -62,8 +62,9 @@ end
 -- Triggers
 
 function onPoseEdge(pose, edge)
-    -- Forward/backward and shuttle
-    if pose == "waveIn" or pose == "waveOut" or pose == "fist" then
+    myo.debug(pose, " ", edge)
+    -- Forward/backward and shuttle and fist and fingersSpread
+    if pose == "waveIn" or pose == "waveOut" or pose == "fist" or pose == "fingersSpread" then
         local now = myo.getTimeMilliseconds()
 
         if edge == "on" then
@@ -71,16 +72,12 @@ function onPoseEdge(pose, edge)
             pose = conditionallySwapWave(pose)
 
             if pose == "waveIn" then
-                myo.debug("waving back")
                 shuttleDirection = "backward"
             elseif pose == "waveOut" then
-                myo.debug("waving forward")
                 shuttleDirection = "forward"
             elseif pose == "fist" then
-                myo.debug("closing fist")
                 shuttleDirection = "close"
             elseif pose == "fingersSpread" then
-                myo.debug("spreading fingers")
                 shuttleDirection = "open"
             end
 
